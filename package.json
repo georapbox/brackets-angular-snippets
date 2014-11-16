@@ -1,0 +1,21 @@
+{
+    "name": "brackets-angular-snippets",
+    "title": "Angular Snippets",
+    "description": "A collection of AngularJS snippets for Brackets.",
+    "homepage": "https://github.com/georapbox/brackets-angular-snippets",
+    "version": "1.0.0",
+    "author": "George Raptis <georapbox@gmail.com> (http://georap.gr)",
+    "license": "MIT",
+    "repository": {
+		"type": "git",
+		"url": "https://github.com/georapbox/brackets-angular-snippets"
+	},
+    "keywords": [
+        "angular",
+        "snippets"
+    ],
+    "engines": {
+        "brackets": ">=0.35.0"
+    },
+    "i18n": ["en"]
+}

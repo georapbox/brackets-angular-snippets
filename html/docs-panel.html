@@ -1,0 +1,93 @@
+<div id="georapbox-angular-snippets-panel" class="bottom-panel vert-resizable top-resizer">
+    <header class="toolbar simple-toolbar-layout">
+        <div id="georapbox-angular-snippets-panel-header"></div>
+        
+        <button class="close">&times;</button>
+    </header>
+    
+    <article class="resizable-content">
+        <h2>Snippets List</h2>
+        
+        <ul>
+            <li>
+                <strong>module =></strong>
+<pre>angular.module('module-name', []).</pre>
+            </li>
+            
+            <li>
+                <strong>controller =></strong>
+<pre>controller('controller-name', ['$scope', function ($scope) {
+
+}]).</pre>
+            </li>
+            
+            <li>
+                <strong>service =></strong>
+<pre>service('service-name', [function () {
+
+}]).</pre>
+            </li>
+            
+            <li>
+                <strong>factory =></strong>
+<pre>factory('factory-name', [function () {
+
+}]).</pre>
+            </li>
+            
+            <li>
+                <strong>directive =></strong>
+<pre>directive('directive-name', [function () {
+	return {
+		restrict: '',
+		link: function (scope, element, attrs) {
+
+		}
+	};
+}]).</pre>
+            </li>
+        </ul>
+        
+        <h2>Directive options list</h2>
+        <ul>
+            <li>scope</li>
+            <li>template</li>
+            <li>templateUrl</li>
+            <li>transclude</li>
+        </ul>
+        <p><strong>NOTE:</strong> Options are sperated by commas (,) <strong>without spaces</strong>.</p>
+        <p>Example:</p>
+        <p><code>directive[scope,template,transclude]</code> will create snippet:</p>
+<pre>directive('directive-name', [function () {
+	return {
+		restrict: '',
+		scope: {},
+		template: '',
+		transclude: true,
+		link: function (scope, element, attrs) {
+
+		}
+	};
+}]).</pre>
+   
+    <h2>Snippets combinations</h2>
+    <p>You can combine snippets together like this:</p>
+    <p><code>module.controller.directive[scope,template]</code> will create snippet:</p>
+<pre>angular.module('module-name', []).
+controller('controller-name', ['$scope', function ($scope) {
+
+}]).
+directive('directive-name', [function () {
+	return {
+		restrict: '',
+		scope: {},
+		template: '',
+		link: function (scope, element, attrs) {
+
+		}
+	};
+}]).</pre>
+   
+        <div class="footer-spacer"></div>
+    </article>
+</div>
