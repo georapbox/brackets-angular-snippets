@@ -10,33 +10,50 @@
         
         <ul>
             <li>
-                <strong>module =></strong>
+                <strong>ngm =></strong>
 <pre>angular.module('module-name', []).</pre>
             </li>
             
             <li>
-                <strong>controller =></strong>
+                <strong>ngconf =></strong>
+<pre>config([function () {
+
+}]).</pre>                
+            </li>
+            
+            <li>
+                <strong>ngconf[$routeProvider]</strong>
+            </li>
+<pre>config(['$routeProvider', function ($routeProvider) {
+	$routeProvider.when('/', {
+		templateUrl: '',
+		controller: ''
+	});
+}]).</pre>
+    
+            <li>
+                <strong>ngc =></strong>
 <pre>controller('controller-name', ['$scope', function ($scope) {
 
 }]).</pre>
             </li>
             
             <li>
-                <strong>service =></strong>
+                <strong>ngs =></strong>
 <pre>service('service-name', [function () {
 
 }]).</pre>
             </li>
             
             <li>
-                <strong>factory =></strong>
+                <strong>ngf =></strong>
 <pre>factory('factory-name', [function () {
 
 }]).</pre>
             </li>
             
             <li>
-                <strong>directive =></strong>
+                <strong>ngd =></strong>
 <pre>directive('directive-name', [function () {
 	return {
 		restrict: '',
@@ -57,7 +74,7 @@
         </ul>
         <p><strong>NOTE:</strong> Options are sperated by commas (,) <strong>without spaces</strong>.</p>
         <p>Example:</p>
-        <p><code>directive[scope,template,transclude]</code> will create snippet:</p>
+        <p><code>ngd[scope,template,transclude]</code> will create snippet:</p>
 <pre>directive('directive-name', [function () {
 	return {
 		restrict: '',
@@ -72,7 +89,7 @@
    
     <h2>Snippets combinations</h2>
     <p>You can combine snippets together like this:</p>
-    <p><code>module.controller.directive[scope,template]</code> will create snippet:</p>
+    <p><code>ngm.ngc.ngd[scope,template]</code> will create snippet:</p>
 <pre>angular.module('module-name', []).
 controller('controller-name', ['$scope', function ($scope) {
 

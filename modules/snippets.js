@@ -14,23 +14,36 @@ define(function (require, exports, module) {
         };
     
     // Module snippet
-    snippets.module = 'angular.module(\'module-name\', []).\n';
+    snippets.ngm = "angular.module('module-name', []).\n";
+    
+    // Config snippet
+    snippets.ngconf = "config([function () {" +
+        "\n\n" +
+        "}]).\n";
+    
+    // Config with $routeProvider
+    snippets['ngconf[$routeProvider]'] = "config(['$routeProvider', function ($routeProvider) {\n" +
+        "\t$routeProvider.when('/', {\n" +
+        "\t\ttemplateUrl: '',\n" +
+        "\t\tcontroller: ''\n" +
+        "\t});\n" +
+        "}]).\n";
     
     // Controller snippet
-    snippets.controller = "controller('controller-name', ['$scope', function ($scope) {" +
+    snippets.ngc = "controller('controller-name', ['$scope', function ($scope) {" +
         "\n\n" +
         "}]).\n";
     
     // Directives Snippets
-    snippets.directive = d.begin + d.restrict + d.link + d.end;
+    snippets.ngd = d.begin + d.restrict + d.link + d.end;
     
     // Factory snippet
-    snippets.factory = "factory('factory-name', [function () {" +
+    snippets.ngf = "factory('factory-name', [function () {" +
         "\n\n" +
         "}]).\n";
     
     // Service snippet
-    snippets.service = "service('service-name', [function () {" +
+    snippets.ngs = "service('service-name', [function () {" +
         "\n\n" +
         "}]).\n";
     
@@ -77,9 +90,11 @@ define(function (require, exports, module) {
 
 
 
-//module.controller.factory.directive[transclude,scope]
 
-//module.directive[scope,template,transclude]
+
+
+
+
 
 
 

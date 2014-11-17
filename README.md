@@ -20,13 +20,32 @@ A collection of [Angular](https://angularjs.org/) snippets for [Brackets](http:/
 
 ## Snippets list
 
-- **module =>**
+- **ngm =>**
 
 ```js
 angular.module('module-name', []).
 ```
 
-- **controller =>**
+- **ngconf =>**
+
+```js
+config([function () {
+
+}]).
+```
+
+- **ngconf[$routeProvider]**
+
+```js
+config(['$routeProvider', function ($routeProvider) {
+	$routeProvider.when('/', {
+		templateUrl: '',
+		controller: ''
+	});
+}]).
+```
+
+- **ngc =>**
 
 ```js
 controller('controller-name', ['$scope', function ($scope) {
@@ -34,7 +53,7 @@ controller('controller-name', ['$scope', function ($scope) {
 }]).
 ```
 
-- **service =>**
+- **ngs =>**
 
 ```js
 service('service-name', [function () {
@@ -42,7 +61,7 @@ service('service-name', [function () {
 }]).
 ```
 
-- **factory =>**
+- **ngf =>**
 
 ```js
 factory('factory-name', [function () {
@@ -50,7 +69,7 @@ factory('factory-name', [function () {
 }]).
 ```
 
-- **directive =>**
+- **ngd =>**
 
 ```js
 directive('directive-name', [function () {
@@ -75,7 +94,7 @@ Directives can be customized at will. Here is a list of all the available option
 
 For example:
 
- - <code>directive[template]</code> will create snippet:
+ - <code>ngd[template]</code> will create snippet:
 ```js
 directive('directive-name', [function () {
 	return {
@@ -88,7 +107,7 @@ directive('directive-name', [function () {
 }]).
 ```
 
-- <code>directive[scope,template,transclude]</code> will create snippet:
+- <code>ngd[scope,template,transclude]</code> will create snippet:
 ```js
 directive('directive-name', [function () {
 	return {
@@ -106,7 +125,7 @@ directive('directive-name', [function () {
 ## Snippets combinations
 You can combine snippets together like this:
 
-<code>module.controller.directive[scope,template]</code> will create snippet:
+<code>ngm.ngc.ngd[scope,template]</code> will create snippet:
 ```js
 angular.module('module-name', []).
 controller('controller-name', ['$scope', function ($scope) {

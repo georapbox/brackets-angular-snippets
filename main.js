@@ -2,7 +2,7 @@
  * @package brackets-angular-snippets
  * @title Angular Snippets
  * @desc A collection of AngularJS snippets for Brackets
- * @version 1.0.0
+ * @version 0.1.0
  * @author George Raptis <https://github.com/georapbox>
  * @repository https://github.com/georapbox/brackets-angular-snippets
  * @license Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license
@@ -31,6 +31,9 @@ define(function (require, exports, module) {
         panelHeaderTemplate = require('text!html/docs-panel-header.html'),
         panel;
     
+    /**
+     * Toggles snippets enabled/disabled.
+     */
     function toggleSnippets() {
         enabled = !enabled;
         prefs.set('enabled', enabled);
@@ -38,11 +41,19 @@ define(function (require, exports, module) {
         CommandManager.get(COMMAND_ID).setChecked(enabled);
     }
     
+    
+    /**    
+     * Applies user's preferences.
+     */
     function applyPreferences() {
         enabled = prefs.get('enabled');
         CommandManager.get(COMMAND_ID).setChecked(enabled);
     }
     
+    /**
+     * Parses a line, splitting into words.
+     * @param
+     */
     function parseLine(line, cursorPosition) {
         var words;
         line = line.substring(0, cursorPosition);
@@ -116,27 +127,29 @@ define(function (require, exports, module) {
                         // Item already exists in snippets object as is.
                         if (item in snippets) {
                             multiSnippet += snippets[item];
-                            console.log('1');
                             return false;
                         }
                         
                         // Item does not exist in snippets object.
                         if (item.indexOf('[') !== -1) {
-                            console.log('2');
                             var newItem = item;
                             item = item.substr(0, item.indexOf('['));
                             
                             if (item in snippets) {
-                                multiSnippet += Snippets.generateCustomDirective(newItem);
+                                switch (item) {
+                                    case 'ngd':
+                                        multiSnippet += Snippets.generateCustomDirective(newItem);
+                                    break;
+                                }
                             }
                         }
-                        
                     });
                     
                     // If multiSnippet is not an ampty string,
                     // it means that a combined snippet string is typed.
                     if (multiSnippet !== '') {
                         editor.document.replaceRange(multiSnippet, start, cursorPosition);
+                        event.preventDefault();
                     }
                 }
             }
