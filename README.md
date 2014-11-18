@@ -8,7 +8,7 @@ A collection of [Angular](https://angularjs.org/) snippets for [Brackets](http:/
 1. Under main menu select **Help > Show Extensions Folder**
 2. Git clone this repository inside the folder user.
 
-#### Extension Manager (NOT AVAILABLE YET)
+#### Extension Manager
 1. Under main menu select **File > Extension Manager...**
 2. Search for "Angular snippets"
 3. Click "Install"
