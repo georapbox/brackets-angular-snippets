@@ -3,7 +3,7 @@
     "title": "Angular Snippets",
     "description": "A collection of AngularJS snippets for Brackets.",
     "homepage": "https://github.com/georapbox/brackets-angular-snippets",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "author": "George Raptis <georapbox@gmail.com> (http://georap.gr)",
     "license": "MIT",
     "repository": {

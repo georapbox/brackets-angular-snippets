@@ -2,7 +2,7 @@
  * @package brackets-angular-snippets
  * @title Angular Snippets
  * @desc A collection of AngularJS snippets for Brackets
- * @version 0.1.0
+ * @version 0.1.1
  * @author George Raptis <https://github.com/georapbox>
  * @repository https://github.com/georapbox/brackets-angular-snippets
  * @license Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license
@@ -30,7 +30,20 @@ define(function (require, exports, module) {
         panelTemplate = require('text!html/docs-panel.html'),
         panelHeaderTemplate = require('text!html/docs-panel-header.html'),
         panel;
-    
+
+	function trim(str, chr) {
+		var rgxtrim = (!chr) ? new RegExp('^\\s+|\\s+$', 'g') : new RegExp('^'+chr+'+|'+chr+'+$', 'g');
+		return str.replace(rgxtrim, '');
+	}
+	function rtrim(str, chr) {
+		var rgxtrim = (!chr) ? new RegExp('\\s+$') : new RegExp(chr+'+$');
+		return str.replace(rgxtrim, '');
+	}
+	function ltrim(str, chr) {
+		var rgxtrim = (!chr) ? new RegExp('^\\s+') : new RegExp('^'+chr+'+');
+		return str.replace(rgxtrim, '');
+	}
+	
     /**
      * Toggles snippets enabled/disabled.
      */
@@ -40,8 +53,7 @@ define(function (require, exports, module) {
         prefs.save();
         CommandManager.get(COMMAND_ID).setChecked(enabled);
     }
-    
-    
+   
     /**    
      * Applies user's preferences.
      */
@@ -57,8 +69,8 @@ define(function (require, exports, module) {
     function parseLine(line, cursorPosition) {
         var words;
         line = line.substring(0, cursorPosition);
-        words = line.split(' '); // /\W/
-        
+        line = ltrim(line);
+		words = line.split(' '); // /\W/
         return words[words.length - 1];
     }
     
