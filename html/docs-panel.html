@@ -10,58 +10,74 @@
         
         <ul>
             <li>
-                <strong>ngm =></strong>
-<pre>angular.module('module-name', []).</pre>
+                <strong>ngmodule =></strong>
+<pre>angular.module('{name}', []).</pre>
             </li>
             
             <li>
-                <strong>ngconf =></strong>
+                <strong>ngconfig =></strong>
 <pre>config([function () {
 
-}]).</pre>                
+}])</pre>
             </li>
             
             <li>
-                <strong>ngconf[$routeProvider]</strong>
+                <strong>ngconfig[$routeProvider]</strong>
             </li>
 <pre>config(['$routeProvider', function ($routeProvider) {
-	$routeProvider.when('/', {
-		templateUrl: '',
-		controller: ''
-	});
-}]).</pre>
+	$routeProvider.when('/{route}', {
+		templateUrl: '{name}.html',
+		controller: '{Name}'
+	}).otherwise({ redirectTo: '/{route}' });
+}])</pre>
+           
+           <li><strong>ngwhen</strong></li>
+<pre>when('/{route}', {
+	templateUrl: '{name}.html',
+	controller: '{Name}'
+})</pre>
+   
+           <li><strong>ngotherwise</strong></li>
+<pre>otherwise({ redirectTo: '/{route}' })</pre>
+   
+           <li><strong>ngrun</strong></li>
+<pre>run([function () {
+
+}])</pre>
     
             <li>
-                <strong>ngc =></strong>
-<pre>controller('controller-name', ['$scope', function ($scope) {
+                <strong>ngcontroller =></strong>
+<pre>controller('{Name}', ['$scope', function ($scope) {
 
-}]).</pre>
+}])</pre>
             </li>
             
             <li>
-                <strong>ngs =></strong>
-<pre>service('service-name', [function () {
+                <strong>ngservice =></strong>
+<pre>service('{name}', [function () {
 
-}]).</pre>
+}])</pre>
             </li>
             
             <li>
-                <strong>ngf =></strong>
-<pre>factory('factory-name', [function () {
-
-}]).</pre>
-            </li>
-            
-            <li>
-                <strong>ngd =></strong>
-<pre>directive('directive-name', [function () {
+                <strong>ngfactory =></strong>
+<pre>factory('{name}', [function () {
 	return {
-		restrict: '',
+
+	};
+}])</pre>
+            </li>
+            
+            <li>
+                <strong>ngdirective =></strong>
+<pre>directive('{name}', [function () {
+	return {
+		restrict: '{A}',
 		link: function (scope, element, attrs) {
 
 		}
 	};
-}]).</pre>
+}])</pre>
             </li>
         </ul>
         
@@ -74,10 +90,10 @@
         </ul>
         <p><strong>NOTE:</strong> Options are sperated by commas (,) <strong>without spaces</strong>.</p>
         <p>Example:</p>
-        <p><code>ngd[scope,template,transclude]</code> will create snippet:</p>
-<pre>directive('directive-name', [function () {
+        <p><code>ngdirective[scope,template,transclude]</code> will create snippet:</p>
+<pre>directive('{name}', [function () {
 	return {
-		restrict: '',
+		restrict: '{A}',
 		scope: {},
 		template: '',
 		transclude: true,
@@ -85,25 +101,27 @@
 
 		}
 	};
-}]).</pre>
+}])</pre>
    
     <h2>Snippets combinations</h2>
     <p>You can combine snippets together like this:</p>
-    <p><code>ngm.ngc.ngd[scope,template]</code> will create snippet:</p>
-<pre>angular.module('module-name', []).
-controller('controller-name', ['$scope', function ($scope) {
+    <p><code>ngmodule.ngconfig[$routeProvider].ngcontroller.ngdirective[scope,template].ngfactory</code> will create snippet:</p>
+<pre>angular.module('{name}', []).controller('{Name}', ['$scope', function ($scope) {
 
-}]).
-directive('directive-name', [function () {
+}]).directive('{name}', [function () {
 	return {
-		restrict: '',
+		restrict: '{A}',
 		scope: {},
 		template: '',
 		link: function (scope, element, attrs) {
 
 		}
 	};
-}]).</pre>
+}]).factory('{name}', [function () {
+	return {
+
+	};
+}]);</pre>
    
         <div class="footer-spacer"></div>
     </article>

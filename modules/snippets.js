@@ -3,9 +3,9 @@ define(function (require, exports, module) {
     
     var snippets = {},
         d = {
-            begin: "directive('directive-name', [function () {\n\treturn {\n",
-            end: "\t};\n}]).\n",
-            restrict: "\t\trestrict: '',\n",
+            begin: "directive('{name}', [function () {\n\treturn {\n",
+            end: "\t};\n}])",
+            restrict: "\t\trestrict: '{A}',\n",
             scope: "\t\tscope: {},\n",
             template: "\t\ttemplate: '',\n",
             templateUrl: "\t\ttemplateUrl: '',\n",
@@ -14,38 +14,49 @@ define(function (require, exports, module) {
         };
     
     // Module snippet
-    snippets.ngm = "angular.module('module-name', []).\n";
+    snippets.ngmodule = "angular.module('{name}', [])";
     
     // Config snippet
-    snippets.ngconf = "config([function () {" +
-        "\n\n" +
-        "}]).\n";
+    snippets.ngconfif = "config([function () {\n\n" +
+        "}])";
     
     // Config with $routeProvider
-    snippets['ngconf[$routeProvider]'] = "config(['$routeProvider', function ($routeProvider) {\n" +
-        "\t$routeProvider.when('/', {\n" +
-        "\t\ttemplateUrl: '',\n" +
-        "\t\tcontroller: ''\n" +
-        "\t});\n" +
-        "}]).\n";
+    snippets['ngconfig[$routeProvider]'] = "config(['$routeProvider', function ($routeProvider) {\n" +
+        "\t$routeProvider.when('/{route}', {\n" +
+        "\t\ttemplateUrl: '{name}.html',\n" +
+        "\t\tcontroller: '{Name}'\n" +
+        "\t}).otherwise({ redirectTo: '/{route}' });\n" +
+        "}])";
+    
+    snippets.ngwhen = "when('/{route}', {\n" +
+        "\ttemplateUrl: '{name}.html',\n" +
+        "\tcontroller: '{Name}'\n" +
+        "})";
+    
+    snippets.ngotherwise = "otherwise({ redirectTo: '/{route}' })";
+    
+    // Run snippet
+    snippets.ngrun = "run([function () {\n\n" +
+        "}])";
     
     // Controller snippet
-    snippets.ngc = "controller('controller-name', ['$scope', function ($scope) {" +
+    snippets.ngcontroller = "controller('{Name}', ['$scope', function ($scope) {" +
         "\n\n" +
-        "}]).\n";
+        "}])";
     
     // Directives Snippets
-    snippets.ngd = d.begin + d.restrict + d.link + d.end;
+    snippets.ngdirective = d.begin + d.restrict + d.link + d.end;
     
     // Factory snippet
-    snippets.ngf = "factory('factory-name', [function () {" +
-        "\n\n" +
-        "}]).\n";
+    snippets.ngfactory = "factory('{name}', [function () {\n" +
+        "\treturn {\n\n" +
+        "\t};\n" +
+        "}])";
     
     // Service snippet
-    snippets.ngs = "service('service-name', [function () {" +
+    snippets.ngservice = "service('{name}', [function () {" +
         "\n\n" +
-        "}]).\n";
+        "}])";
     
     /**
      * Creates a custom directive snippet with options.
@@ -87,15 +98,3 @@ define(function (require, exports, module) {
     exports.snippets = snippets;
     exports.generateCustomDirective = generateCustomDirective;
 });
-
-
-
-
-
-
-
-
-
-
-
-

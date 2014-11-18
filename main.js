@@ -126,7 +126,7 @@ define(function (require, exports, module) {
                     sk.forEach(function (item) {
                         // Item already exists in snippets object as is.
                         if (item in snippets) {
-                            multiSnippet += snippets[item];
+                            multiSnippet += snippets[item] + '.';
                             return false;
                         }
                         
@@ -137,8 +137,8 @@ define(function (require, exports, module) {
                             
                             if (item in snippets) {
                                 switch (item) {
-                                    case 'ngd':
-                                        multiSnippet += Snippets.generateCustomDirective(newItem);
+                                    case 'ngdirective':
+                                        multiSnippet += Snippets.generateCustomDirective(newItem) + '.';
                                     break;
                                 }
                             }
@@ -148,6 +148,10 @@ define(function (require, exports, module) {
                     // If multiSnippet is not an ampty string,
                     // it means that a combined snippet string is typed.
                     if (multiSnippet !== '') {
+                        if (multiSnippet.charAt(multiSnippet.length - 1) === '.') {
+                            multiSnippet = multiSnippet.substr(0, multiSnippet.length - 1) + ';';
+                        } 
+                        
                         editor.document.replaceRange(multiSnippet, start, cursorPosition);
                         event.preventDefault();
                     }
