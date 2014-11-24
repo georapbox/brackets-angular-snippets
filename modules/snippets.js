@@ -17,7 +17,7 @@ define(function (require, exports, module) {
     snippets.ngmodule = "angular.module('{name}', [])";
     
     // Config snippet
-    snippets.ngconfif = "config([function () {\n\n" +
+    snippets.ngconfig = "config([function () {\n\n" +
         "}])";
     
     // Config with $routeProvider
